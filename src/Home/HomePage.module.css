@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Permanent+Marker&display=swap');
+
 
 div {
     justify-content: center;
@@ -9,6 +11,7 @@ div {
     text-align: center;
    
 }
+
 h1 {
-  font-family: 'Permanent Marker', cursive;
+    font-family: 'Permanent Marker';
 }
