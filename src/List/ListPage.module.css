@@ -1,12 +1,27 @@
 
 .fruitList {
-    display:inline-block;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    ;
 }
 
 
 .fruitDiv {
-    display: flex;
-    height: 400px;
-    width: 600px;
+    text-align: center;
+    justify-content: center;
+    border: solid 1px gray;
+    height: auto;
+    width: 80vw;
+    margin: 10px;
 
+}
+h1 {
+    text-align: center;
+    display: block;
+    width: 100vw;
+}
+
+p {
+    display: block;
 }

@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { getCategories, getFruit, updateFruit, getCategoryID, deleteFruit } from '../api-utils.js';
-import style from './DetailsPage.module.css';
+import style from '../Create/CreatePage.module.css';
 export default class DetailsPage extends Component {
     state = {
         name: '',
-        category_id: 1,
+        category_id: this.props.match.params.fruitId,
         categories: [],
+        category: '',
         flavor: '',
         color: '',
         grown_in: '',
@@ -71,8 +72,8 @@ console.log(this.state)
                         Category
                         <select value={this.state.category} onChange={this.handleCategoryChange}> {
                             this.state.categories.map(category =>
-                                <option value={category.id}
-                                        selected={this.state.category_id === category.id}>{category.name_type}</option>)}
+                                <option key={category.name_type} value={this.props.category_id}
+                                        selected={this.state.category === category.id}>{category.name_type}</option>)}
                         </select> 
                     </label>
                     <label>

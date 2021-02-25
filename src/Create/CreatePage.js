@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { makeFruit } from '../api-utils.js';
+import { makeFruit, getCategories } from '../api-utils.js';
 import style from './CreatePage.module.css';
 export default class CreatePage extends Component {
     state = {
         name: '',
-        category: [],
+        category: '',
         category_id: 1,
+        categories: [],
         flavor: '',
         color: '',
         grown_in: '',
@@ -14,11 +15,18 @@ export default class CreatePage extends Component {
         
     }
 
+    componentDidMount = async () => {
+        const categories = await getCategories();
 
+        this.setState({
+            categories
+        })
+}
 
     handleNameChange = (e) => this.setState({ name: e.target.value });
 
     handleCategoryChange = (e) => this.setState({
+
         category_id: Number(e.target.value),
         category: e.target.value,
     });
@@ -51,11 +59,8 @@ console.log(this.state)
                     </label>
                     <label>
                         Category
-                        <select value={this.state.category} onChange={this.handleCategoryChange}>
-                            <option value={1}>Tart</option>
-                            <option value={2}>Sweet</option>
-                            <option value={3}>Floral</option>
-                        </select> 
+                        <select value={this.state.category} onChange={this.handleCategoryChange}>{this.state.categories.map(category =>
+                            <option key={category.name_type} value={category.id} >{category.name_type}</option>)}</select> 
                     </label>
                     <label>
                         Flavor
