@@ -1,40 +1,48 @@
-import './App.css'
-import request from 'superagent';
 
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import {
+    BrowserRouter as Router, 
+    Route, 
+    Switch,
+} from 'react-router-dom';
+
+import HomePage from './Home/HomePage.js';
+import Header from './Header/Header.js';
+import DetailsPage from './Details/DetailsPage.js';
+import CreatePage from './Create/CreatePage.js';
+import ListPage from './List/ListPage.js';
+
 
 export default class App extends Component {
-
-  state = {
-    fruitsData: [],
-  }
-
-  componentDidMount = async () => {
-   const data = await request.get(`https://frozen-anchorage-14022.herokuapp.com/fruits`);
-
-    console.log(data.body)
-    await this.setState({
-      fruitsData: data.body,
-    });
-   console.log(this.state.fruitsData);
-  } 
-  render() {
-    
-
-    return (
-      <div>
-        <h1>FRUITS</h1>
-        
-        {this.state.fruitsData.map(fruit => <div><h2>{fruit.name}</h2>
-          <p>{fruit.category}</p>
-          <p>{fruit.flavor}</p>
-          <p>{fruit.color}</p>
-          <p>{fruit.grown_in}</p>
-          <p>${fruit.price}</p>
-          <p>{fruit.looks_weird}</p>
-          </div>)}
-        
-      </div>
-    )
-  }
+    render() {
+        return (
+            <div>
+                <Router>
+                  <Header />
+                    <Switch>
+                        <Route 
+                            path="/" 
+                            exact
+                            render={(routerProps) => <HomePage {...routerProps} />} 
+                        />
+                        <Route 
+                            path="/fruits" 
+                            exact
+                            render={(routerProps) => <ListPage {...routerProps} />} 
+                        />
+                        <Route 
+                            path="/fruits/:fruitId" 
+                            exact
+                            render={(routerProps) => <DetailsPage {...routerProps} />} 
+                        />
+                        <Route 
+                            path="/create" 
+                            exact
+                            render={(routerProps) => <CreatePage {...routerProps} />} 
+                        />
+                    </Switch>
+                </Router>
+            </div>
+        )
+    }
 }
