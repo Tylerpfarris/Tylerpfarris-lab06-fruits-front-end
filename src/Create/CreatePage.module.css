@@ -8,8 +8,21 @@ label {
     margin-bottom: 10px;
     margin-top: 4px;
     padding-left: 3px;
+    font-family: 'Lato';
 }
 
 input {
     margin-left: 4px;
+    font-family: 'Lato';
+}
+
+textarea {
+    margin-left: 4px;
+    font-family: 'Lato';
+}
+
+.deleteButton {
+    margin-left:10px;
+    margin-top: 5px;
+    padding-left: 10px;
 }

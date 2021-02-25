@@ -78,7 +78,7 @@ console.log(this.state)
                     </label>
                     <label>
                         Flavor
-                        <input value={this.state.flavor} onChange={this.handleFlavorChange}></input> 
+                        <textarea value={this.state.flavor} onChange={this.handleFlavorChange}></textarea> 
                     </label>
                     <label>
                         Color
@@ -94,11 +94,11 @@ console.log(this.state)
                     </label>
                     <label>
                         Looks Weird
-                        <input value={this.state.looks_weird} type="checkbox" onChange={this.handleLooksWeirdChange}></input> 
+                        <input value={this.state.looks_weird} type="checkbox" checked={this.state.looks_weird} onChange={this.handleLooksWeirdChange}></input> 
                     </label>
                     <button>Update</button> 
                 </form>
-                <button onClick={this.handleDelete}>Delete</button>
+                <button className={style.deleteButton} onClick={this.handleDelete}>Delete</button>
             </div>
         )
     }
